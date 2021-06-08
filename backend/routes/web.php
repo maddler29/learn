@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::get('/learn01', 'App\Http\Controllers\LearnController@index')->name('learn.index');
 
-
+Route::get('/lecture01', 'App\Http\Controllers\LectureController@lecture1');
