@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
     $student = ["田中","井伊","織田"];
     dd($student);
 });
+
+
+Route::get('/learn01', 'App\Http\Controllers\LearnController@index')->name('learn.index');
+
+
