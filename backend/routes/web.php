@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $student = ["田中","井伊","織田"];
-    dd($student);
-});
 
+Route::get('/', 'App\Http\Controllers\TaskController@index')->name('task.index');
+Route::get('/create', 'App\Http\Controllers\TaskController@create')->name('task.create');
+Route::post('/store', 'App\Http\Controllers\TaskController@store')->name('task.store');
 
 Route::get('/learn01', 'App\Http\Controllers\LearnController@index')->name('learn.index');
+Route::get('/foreach', 'App\Http\Controllers\LearnController@learnforeach');
 
 Route::get('/lecture01', 'App\Http\Controllers\LectureController@lecture1');
+
+

@@ -30,4 +30,21 @@ class LearnController extends Controller
         return view('learn',
             compact('n', 'msg','array01','array02'));
     }
+
+    public function learnforeach()
+    {
+        // TEST
+        $box = [
+            'リスト1' => 'りんご',
+            'リスト2' => 'オレンジ',
+            'リスト3' => 'いちご'
+        ];
+
+        foreach($box as $key => $value)
+        {
+            echo $key;
+            echo $value;
+            echo '買い物'. $key.'は、'. $value.'です。<br/>';
+        }
+    }
 }
