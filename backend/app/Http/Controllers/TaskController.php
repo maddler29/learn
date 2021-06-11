@@ -9,7 +9,10 @@ class TaskController extends Controller
 {
     //
     public function index() {
-        return view('task.index');
+        // // データベースのデータをまとめて取り出すall()
+        $tasks = task::all();
+        // 変数tasksをkeyとしてviewのforeachにデータを渡している
+        return view('task.index',['tasks' => $tasks]);
     }
 
     public function create() {
