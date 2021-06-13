@@ -30,6 +30,7 @@ class TaskController extends Controller
     public function delete(Request $request, $id, Task $task) {
         // findメソッドでid変数で指定したデータを取り出す
         $task = Task::find($id);
+        $task->delete();
         return redirect()->route('task.index');
     }
 }

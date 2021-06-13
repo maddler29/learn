@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\TaskController@index')->name('task.index');
 Route::get('/create', 'App\Http\Controllers\TaskController@create')->name('task.create');
 Route::post('/store', 'App\Http\Controllers\TaskController@store')->name('task.store');
-Route::delete('/delete/{id}', 'App\Http\Controllers\TaskController@delete')->name('task.delete');
+Route::post('/delete/{id}', 'App\Http\Controllers\TaskController@delete')->name('task.delete');
 
 
 Route::get('/learn01', 'App\Http\Controllers\LearnController@index')->name('learn.index');

@@ -19,16 +19,20 @@
             <td>リスト名</td>
             <td>リスト名</td>
             <td>リスト名</td>
+            <td>
+                <!--エラー発生
+                Missing required parameter for [Route: task.delete] [URI: delete/{id}]
+                次を追加　$task->id
+                -->
+                <form method="post" action="{{ route('task.delete', $task->id) }}">
+                    @csrf
+                    <input type="submit" value="削除">
+                </form>
+            </td>
         </tr>
         @endforeach
     </table>
     <a href="{{ route('task.create') }}">タスクを追加する</a>
-    <!--エラー発生
-    Missing required parameter for [Route: task.delete] [URI: delete/{id}]
-    次を追加　$task->id
-    -->
-    <form method="delete" action="{{ route('task.delete', $task->id) }}">
-        <input type="submit" value="削除">
-    </form>
+
 </body>
 </html>
