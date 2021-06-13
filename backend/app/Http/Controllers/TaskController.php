@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     //
     public function index() {
-        // // データベースのデータをまとめて取り出すall()
+        // データベースのデータをまとめて取り出すall()
         $tasks = task::all();
         // 変数tasksをkeyとしてviewのforeachにデータを渡している
         return view('task.index',['tasks' => $tasks]);
@@ -25,5 +25,11 @@ class TaskController extends Controller
         $task->task = $request->task;
         $task->save();
         return redirect()->route('task.index', ['id' => $task->id]);
+    }
+
+    public function delete(Request $request, $id, Task $task) {
+        // findメソッドでid変数で指定したデータを取り出す
+        $task = Task::find($id);
+        return redirect()->route('task.index');
     }
 }
