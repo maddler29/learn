@@ -33,6 +33,6 @@
         @endforeach
     </table>
     <a href="{{ route('task.create') }}">タスクを追加する</a>
-
+    <a href="{{ route('task.edit') }}">タスクを編集する</a>
 </body>
 </html>
