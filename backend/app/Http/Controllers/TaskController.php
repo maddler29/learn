@@ -27,11 +27,12 @@ class TaskController extends Controller
         return redirect()->route('task.index', ['id' => $task->id]);
     }
 
-    public  function edit($id, Task $task) {
+    public  function edit(Request $request,$id) {
          // findメソッドでid変数に指定したデータを取り出す
          // 一覧でクリックしたIDを受け取ってtaskテーブルを検索し、その内容を表示する。
-        $task = Task::findOrFail($id);
-        return view('task.edit')->with('task',$task);
+        $task1 = Task::find($id);
+
+        return view('task.edit',compact('task1'));
 
     }
 
