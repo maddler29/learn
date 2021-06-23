@@ -20,7 +20,7 @@
             <td>リスト名</td>
             <td>リスト名</td>
             <td>
-                <form method="get" action="{{ route('task.edit', $task->id) }}">
+                <form method="get" action="{{ route('task.edit', [$task->id]) }}">
                     @csrf
                     <input type="submit" value="編集">
                 </form>
