@@ -19,7 +19,7 @@ class TaskController extends Controller
         return view('task.create');
     }
 
-    public  function store(Request $request) {
+    public function store(Request $request) {
         // taskを登録する
         $task = new Task();
         $task->task = $request->task;
@@ -27,13 +27,20 @@ class TaskController extends Controller
         return redirect()->route('task.index', ['id' => $task->id]);
     }
 
-    public  function edit(Request $request,$id) {
+    public function edit(Request $request,$id) {
          // findメソッドでid変数に指定したデータを取り出す
          // 一覧でクリックしたIDを受け取ってtaskテーブルを検索し、その内容を表示する。
         $task1 = Task::find($id);
-
         return view('task.edit',compact('task1'));
 
+    }
+
+    public function update(Request $request, $id, Task $task1) {
+        $task1 = Task::find($id);
+        $task1->task = $request->task;
+        $task1->save();
+
+        return redirect()->route('task.index', ['id' => $task1->id]);
     }
 
 
