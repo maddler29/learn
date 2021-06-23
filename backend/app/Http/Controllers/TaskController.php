@@ -35,7 +35,7 @@ class TaskController extends Controller
 
     }
 
-    public function update(Request $request, $id, Task $task1) {
+    public function update(Request $request, $id) {
         $task1 = Task::find($id);
         $task1->task = $request->task;
         $task1->save();
@@ -45,7 +45,7 @@ class TaskController extends Controller
 
 
 
-    public function delete(Request $request, $id, Task $task) {
+    public function delete(Request $request, $id) {
         // findメソッドでid変数で指定したデータを取り出す
         $task = Task::find($id);
         // 削除機能追加
