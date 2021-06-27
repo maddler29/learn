@@ -11,6 +11,10 @@ class TaskController extends Controller
     public function index() {
         // データベースのデータをまとめて取り出すall()
         $tasks = task::all();
+        $categories = Task::find(1)->categories;
+        foreach ($categories as category) {
+            //
+        }
         // 変数tasksをkeyとしてviewのforeachにデータを渡している
         return view('task.index',['tasks' => $tasks]);
     }
