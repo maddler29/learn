@@ -27,6 +27,10 @@ class TaskController extends Controller
         // taskを登録する
         $task = new Task();
         $task->task = $request->task;
+
+        // categoryを登録する
+        $task->category_id = $request->category_id;
+
         $task->save();
         return redirect()->route('task.index', ['id' => $task->id]);
     }
