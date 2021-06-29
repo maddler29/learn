@@ -9,8 +9,8 @@ class Task extends Model
 {
     use HasFactory;
     public $table = 'tasks';
-    public function categories() {
+    public function category() {
 
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }
