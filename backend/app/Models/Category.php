@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    // taskに対してなので複数形
         public function tasks() {
-        return $this->belongsTo(Task::class);
+        return $this->hasMany(Task::class);
     }
 }

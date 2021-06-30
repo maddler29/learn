@@ -9,10 +9,12 @@
     <table>
         <tr>
             <th>今日何にする</th>
+            <th>カテゴリ</th>
         </tr>
         @foreach($tasks as $task)
         <tr>
             <td>{{ $task->task }}</td>
+            <td>{{ $task->category->category }}</td>
 
             <td>
                 <form method="get" action="{{ route('task.edit', [$task->id]) }}">
