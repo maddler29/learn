@@ -11,6 +11,10 @@ class TaskController extends Controller
     public function index() {
         // データベースのデータをまとめて取り出すall()
         $tasks = task::all();
+        $categories = Task::find(1)->categories;
+        foreach ($categories as category) {
+            //
+        }
         // 変数tasksをkeyとしてviewのforeachにデータを渡している
         return view('task.index',['tasks' => $tasks]);
     }
@@ -23,6 +27,10 @@ class TaskController extends Controller
         // taskを登録する
         $task = new Task();
         $task->task = $request->task;
+
+        // categoryを登録する
+        $task->category_id = $request->category_id;
+
         $task->save();
         return redirect()->route('task.index', ['id' => $task->id]);
     }

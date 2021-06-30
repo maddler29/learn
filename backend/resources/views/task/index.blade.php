@@ -9,16 +9,11 @@
     <table>
         <tr>
             <th>今日何にする</th>
-            <th>チェックボックス</th>
-            <th>編集</th>
-            <th>タブ管理</th>
         </tr>
         @foreach($tasks as $task)
         <tr>
             <td>{{ $task->task }}</td>
-            <td>リスト名</td>
-            <td>リスト名</td>
-            <td>リスト名</td>
+
             <td>
                 <form method="get" action="{{ route('task.edit', [$task->id]) }}">
                     @csrf
