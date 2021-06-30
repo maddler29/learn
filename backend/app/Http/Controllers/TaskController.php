@@ -12,7 +12,6 @@ class TaskController extends Controller
         // データベースのデータをまとめて取り出すall()
         // taskをcategoryと一緒にすべて取得
         $tasks = task::with('category')->get();
-        dump($tasks);
 
         // 変数tasksをkeyとしてviewのforeachにデータを渡している
         return view('task.index',['tasks' => $tasks]);
