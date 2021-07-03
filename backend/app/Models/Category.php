@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     // taskに対してなので複数形
-        public function tasks() {
+    public function tasks() {
         return $this->hasMany(Task::class);
     }
 }

@@ -7,6 +7,27 @@
 </head>
 <body>
     <table>
+        @foreach($categories as $category)
+            <tr>
+                <td>{{$category->category}}</td>
+
+                <td>
+                    <form method="get" action="{{ route('category.edit',[$category->id]) }}">
+                        <input type="submit" value="編集">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="{{ route('category.delete',[$category->id]) }}">
+                        @csrf
+                        <input type="submit" value="削除">
+                        <input type="hidden" name="_method" value="delete">
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+        <a href="{{ route('category.create') }}">カテゴリを追加する</a>
+    <table>
         <tr>
             <th>今日何にする</th>
             <th>カテゴリ</th>
@@ -14,8 +35,11 @@
         @foreach($tasks as $task)
         <tr>
             <td>{{ $task->task }}</td>
-            <td>{{ $task->category->category }}</td>
-
+            <td>
+                @if($task->category)
+                    {{ $task->category->category }}
+                @endif
+            </td>
             <td>
                 <form method="get" action="{{ route('task.edit', [$task->id]) }}">
                     @csrf
@@ -38,6 +62,8 @@
         @endforeach
     </table>
     <a href="{{ route('task.create') }}">タスクを追加する</a>
+
+
 
 </body>
 </html>

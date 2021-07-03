@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -9,16 +10,19 @@ class TaskController extends Controller
 {
     //
     public function index() {
-        // データベースのデータをまとめて取り出すall()
         // taskをcategoryと一緒にすべて取得
         $tasks = task::with('category')->get();
 
+        $categories = Category::all();
+
         // 変数tasksをkeyとしてviewのforeachにデータを渡している
-        return view('task.index',['tasks' => $tasks]);
+        return view('task.index',['tasks' => $tasks,'categories' => $categories]);
     }
 
     public function create() {
-        return view('task.create');
+        // カテゴリの全データをcategoryキーとしてデータを渡している
+        $category = Category::all();
+        return view('task.create',['category' => $category]);
     }
 
     public function store(Request $request) {
@@ -36,17 +40,19 @@ class TaskController extends Controller
     public function edit(Request $request,$id) {
          // findメソッドでid変数に指定したデータを取り出す
          // 一覧でクリックしたIDを受け取ってtaskテーブルを検索し、その内容を表示する。
-        $task1 = Task::find($id);
-        return view('task.edit',compact('task1'));
+        $task = Task::find($id);
+        $categories = Category::all();
+        return view('task.edit',compact('task','categories'));
 
     }
 
     public function update(Request $request, $id) {
-        $task1 = Task::find($id);
-        $task1->task = $request->task;
-        $task1->save();
+        $task = Task::find($id);
+        $task->category_id = $request->category_id;
+        $task->task = $request->task;
+        $task->save();
 
-        return redirect()->route('task.index', ['id' => $task1->id]);
+        return redirect()->route('task.index', ['id' => $task->id]);
     }
 
 
