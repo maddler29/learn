@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
-    public $table = 'tasks';
-    public function category() {
 
+    public $table = 'tasks';
+
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 }
