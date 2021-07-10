@@ -21,6 +21,7 @@ Route::get('/task/edit/{id}', 'App\Http\Controllers\TaskController@edit')->name(
 Route::post('/task/update/{id}', 'App\Http\Controllers\TaskController@update')->name('task.update');
 Route::delete('/task/delete/{id}', 'App\Http\Controllers\TaskController@delete')->name('task.delete');
 Route::post('/task/{id}/status', 'App\Http\Controllers\TaskStatusController@update')->name('task.status.update');
+Route::post('/task/{id}/favorite', 'App\Http\Controllers\TaskFavoriteController@update')->name('task.favorite.update');
 
 // category-route
 Route::get('/category/create','App\Http\Controllers\CategoryController@create')->name('category.create');
